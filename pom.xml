@@ -2,20 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>ru.mityugov</groupId>
 	<artifactId>timetableservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TimetableService</name>
 	<description>Springboot-service for managing groups of students and teachers assigned to them by discipline</description>
+
 	<properties>
 		<java.version>17</java.version>
+
+		<flyway.user>postgres</flyway.user>
+		<flyway.password>postgres</flyway.password>
+		<flyway.schemas>public</flyway.schemas>
+		<flyway.url>jdbc:postgresql://localhost:5431/timetable-service</flyway.url>
+		<flyway.locations>filesystem:db/migration</flyway.locations>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -41,13 +51,29 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>3.1.5</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<configuration>
+					<user>${flyway.user}</user>
+					<schemas>
+						<schema>${flyway.schemas}</schema>
+					</schemas>
+					<url>${flyway.url}</url>
+					<password>${flyway.password}</password>
+					<locations>${flyway.locations}</locations>
+					<cleanDisabled>false</cleanDisabled>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

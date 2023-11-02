@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:16'
+    container_name: 'timetable-service-database'
+    ports:
+      - "5431:5432"
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+      - 'POSTGRES_DB=timetable-service'
+      - 'POSTGRES_PASSWORD=postgres'
