@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher</title>
+</head>
+<body>
+
+<p th:text="${teacher.getFullName() + ' - ' + teacher.getDegree().getName()}"></p>
+
+<hr/>
+
+<form th:method="GET" th:action="@{/teachers/{id}/update(id=${teacher.getId()})}">
+    <input type="submit" value="Edit">
+</form>
+
+<br/>
+
+<form th:method="DELETE" th:action="@{/teachers/{id}(id=${teacher.getId()})}">
+    <input type="submit" value="Delete">
+</form>
+
+</body>
+</html>
