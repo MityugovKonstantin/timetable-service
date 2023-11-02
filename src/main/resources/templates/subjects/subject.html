@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subject</title>
+</head>
+<body>
+
+<p th:text="'Name: ' + ${subject.getName()}"></p>
+<p th:text="'Description: ' + ${subject.getDescription()}"></p>
+<br>
+<p th:if="${subject.getCourseAcademicHours() != null}" th:text="'Course academic hours: ' + ${subject.getCourseAcademicHours()}"></p>
+<p th:if="${subject.getLaboratoryAcademicHours() != null}" th:text="'LaboratoryAcademicHours: ' + ${subject.getLaboratoryAcademicHours()}"></p>
+<p th:if="${subject.getLectureAcademicHours() != null}" th:text="'Lecture academic hours: ' + ${subject.getLectureAcademicHours()}"></p>
+<p th:if="${subject.getPracticalAcademicHours() != null}" th:text="'Practical academic hours: ' + ${subject.getPracticalAcademicHours()}"></p>
+
+<hr/>
+
+<form th:method="GET" th:action="@{/subjects/{id}/update(id=${subject.getId()})}">
+    <input type="submit" value="Edit">
+</form>
+
+<br/>
+
+<form th:method="DELETE" th:action="@{/subjects/{id}(id=${subject.getId()})}">
+    <input type="submit" value="Delete">
+</form>
+
+</body>
+</html>

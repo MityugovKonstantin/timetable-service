@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding subject</title>
+</head>
+<body>
+
+
+<form th:method="POST" th:action="@{/subjects/add}" th:object="${subject}">
+
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</div>
+    <br/>
+
+    <label for="description">Enter description: </label>
+    <input type="text" th:field="*{description}" id="description">
+    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">description error</div>
+    <br/>
+
+    <label for="courseAcademicHours">Enter course academic hours: </label>
+    <input type="number" th:field="*{courseAcademicHours}" id="courseAcademicHours">
+    <div style="color: red" th:if="${#fields.hasErrors('courseAcademicHours')}" th:errors="*{courseAcademicHours}">courseAcademicHours error</div>
+    <br/>
+
+    <label for="laboratoryAcademicHours">Enter laboratory academic hours: </label>
+    <input type="number" th:field="*{laboratoryAcademicHours}" id="laboratoryAcademicHours">
+    <div style="color: red" th:if="${#fields.hasErrors('laboratoryAcademicHours')}" th:errors="*{laboratoryAcademicHours}">laboratoryAcademicHours error</div>
+    <br/>
+
+    <label for="lectureAcademicHours">Enter lecture academic hours: </label>
+    <input type="number" th:field="*{lectureAcademicHours}" id="lectureAcademicHours">
+    <div style="color: red" th:if="${#fields.hasErrors('lectureAcademicHours')}" th:errors="*{lectureAcademicHours}">lectureAcademicHours error</div>
+    <br/>
+
+    <label for="practicalAcademicHours">Enter practical academic hours: </label>
+    <input type="number" th:field="*{practicalAcademicHours}" id="practicalAcademicHours">
+    <div style="color: red" th:if="${#fields.hasErrors('practicalAcademicHours')}" th:errors="*{practicalAcademicHours}">practicalAcademicHours error</div>
+    <br/>
+
+    <input type="submit" value="Create!">
+</form>
+
+</body>
+</html>
