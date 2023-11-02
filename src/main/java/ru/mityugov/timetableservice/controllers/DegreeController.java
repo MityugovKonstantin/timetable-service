@@ -11,12 +11,12 @@ import ru.mityugov.timetableservice.services.DegreeService;
 
 @Controller
 @RequestMapping("/degrees")
-public class DegreeControllers {
+public class DegreeController {
 
     private final DegreeService degreeService;
 
     @Autowired
-    public DegreeControllers(DegreeService degreeService) {
+    public DegreeController(DegreeService degreeService) {
         this.degreeService = degreeService;
     }
 
@@ -57,7 +57,7 @@ public class DegreeControllers {
                                BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "degrees/updating";
-        degreeService.save(degree);
+        degreeService.update(id, degree);
         return "redirect:/degrees";
     }
 
