@@ -17,9 +17,9 @@ insert into subject (name, description, practical_academic_hours, lecture_academ
     values ('БД', 'Базы данных', 12, 12, 12);
 
 -- Teacher
-insert into teacher (surname, name, patronymic, degree)
+insert into teacher (surname, name, patronymic, degree_id)
     values ('Мицель', 'Артур', 'Эдуардович', 2);
-insert into teacher (surname, name, degree)
+insert into teacher (surname, name, degree_id)
     values ('Яблонский', 'Ян', 2);
 
 -- StudentGroup

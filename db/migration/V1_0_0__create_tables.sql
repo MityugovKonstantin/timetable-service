@@ -29,7 +29,7 @@ create table teacher
     surname    varchar(100)               not null,
     name       varchar(100)               not null,
     patronymic varchar(100),
-    degree     int references degree (id) not null
+    degree_id  int references degree (id) not null
 );
 
 create table student_group
