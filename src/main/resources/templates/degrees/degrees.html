@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Degrees</title>
+</head>
+<body>
+
+<div th:each="degree : ${degrees}">
+    <a th:href="@{/degrees/{id}(id=${degree.getId()})}"
+       th:text="${degree.getName()}">book</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/degrees/add">Add new degree</a>
+
+</body>
+</html>
