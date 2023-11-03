@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Updating lesson</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/lessons/{id}/update(id=${lesson.getId()})}" th:object="${lesson}">
+
+    <label for="lesson_type">Choose lesson_type</label>
+    <select th:field="*{lessonType}" id="lesson_type">
+        <option th:each="lesson_type : ${lesson_types}" th:value="${lesson_type.getId()}"
+                th:text="${lesson_type.getName()}"></option>
+    </select>
+
+    <label for="subject">Choose subject</label>
+    <select th:field="*{subject}" id="subject">
+        <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
+                th:text="${subject.getName()}"></option>
+    </select>
+
+    <label for="dateTime">Enter time and date: </label>
+    <input type="datetime-local" th:field="*{dateTime}" id="dateTime">
+    <div style="color: red" th:if="${#fields.hasErrors('dateTime')}" th:errors="*{dateTime}">dateTime error</div>
+    <br/>
+
+    <input type="submit" value="Update!">
+</form>
+
+</body>
+</html>

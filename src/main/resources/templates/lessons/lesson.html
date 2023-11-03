@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson</title>
+</head>
+<body>
+
+<p th:text="${lesson.getSubject().getName()} + ' - ' + ${lesson.getLessonType().getName()} + ' (' + ${lesson.getDateTime()} + ')'"></p>
+
+<hr/>
+
+<form th:method="GET" th:action="@{/lessons/{id}/update(id=${lesson.getId()})}">
+    <input type="submit" value="Edit">
+</form>
+
+<br/>
+
+<form th:method="DELETE" th:action="@{/lessons/{id}(id=${lesson.getId()})}">
+    <input type="submit" value="Delete">
+</form>
+
+</body>
+</html>

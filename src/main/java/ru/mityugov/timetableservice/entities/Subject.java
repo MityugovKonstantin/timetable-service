@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.List;
+
 @Entity
 @Table(name = "subject")
 public class Subject {
@@ -37,15 +39,18 @@ public class Subject {
     @Column(name = "course_academic_hours")
     private Integer courseAcademicHours;
 
+    @OneToMany(mappedBy = "subject")
+    private List<Lesson> lessons;
+
     public Subject() {}
 
     public Subject(
-            String name,
-            String description,
-            Integer laboratoryAcademicHours,
-            Integer practicalAcademicHours,
-            Integer lectureAcademicHours,
-            Integer courseAcademicHours
+        String name, String description,
+        Integer laboratoryAcademicHours,
+        Integer practicalAcademicHours,
+        Integer lectureAcademicHours,
+        Integer courseAcademicHours,
+        List<Lesson> lessons
     ) {
         this.name = name;
         this.description = description;
@@ -53,6 +58,7 @@ public class Subject {
         this.practicalAcademicHours = practicalAcademicHours;
         this.lectureAcademicHours = lectureAcademicHours;
         this.courseAcademicHours = courseAcademicHours;
+        this.lessons = lessons;
     }
 
     public int getId() {
@@ -109,5 +115,13 @@ public class Subject {
 
     public void setCourseAcademicHours(Integer courseAcademicHours) {
         this.courseAcademicHours = courseAcademicHours;
+    }
+
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }
